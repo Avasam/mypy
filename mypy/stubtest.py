@@ -334,10 +334,7 @@ def verify_mypyfile(
 
     if hasattr(runtime, "__all__"):
         runtime_all_as_set = set(runtime.__all__)
-        if "__all__" in stub.names:
-            # Only verify the contents of the stub's __all__
-            # if the stub actually defines __all__
-            yield from _verify_exported_names(object_path, stub, runtime_all_as_set)
+        yield from _verify_exported_names(object_path, stub, runtime_all_as_set)
     else:
         runtime_all_as_set = None
 
